@@ -1,7 +1,7 @@
-from typing import Any
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ProblemForm
+from loguru import logger
 
 from problems.models import Categories, Problems
 
@@ -23,19 +23,29 @@ def problems(request):
     return render(request, "problems/problems.html", context)
 
 
-def about_problems(request) -> Any:
-    return render(request, "problems/about_problems.html")
+def about_problems(request, id):
+    problem = get_object_or_404(Problems, pk=id)
+    return render(request, "problems/about_problems.html", {"problem": problem})
 
 
 @login_required
 def create_problem(request):
-    if request.method == "POST":
-        form = ProblemForm(request.POST, request.FILES)
-        if form.is_valid():
-            problem = form.save(commit=False)
-            problem.status = "New"
-            problem.save()
-            return redirect("problems")
-    else:
-        form = ProblemForm()
-    return render(request, "problems/create_problem.html", {"form": form})
+    try:
+        if request.method == "POST":
+            form = ProblemForm(request.POST, request.FILES)
+            logger.debug(f"{form = }")
+            if form.is_valid():
+                problem = form.save(commit=False)
+                problem.user = request.user  # Привязываем проблему к текущему пользователю
+                problem.status = "Новая"
+                problem.save()
+                return redirect("problems:index")  # Перенаправление после создания
+            logger.debug(form.errors)
+        else:
+            form = ProblemForm()
+        return render(request, "problems/create_problem.html", {"form": form})
+    except Exception as e:
+        logger.opt(exception=e).error("Проблема при создании проблемы")
+
+        return render(request, "problems/create_problem.html", {"form": form})
+

@@ -22,7 +22,8 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    user_problems = Problems.objects.filter(user=request.user).order_by('-id')
+    return render(request, 'accounts/profile.html', {'problems': user_problems})
 
 
 def logout_account(request):

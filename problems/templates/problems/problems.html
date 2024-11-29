@@ -1,5 +1,7 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load base64_filters %}
+
 
 
 {% block content %}
@@ -36,13 +38,13 @@
         {% for problem in problems %}
         <div class="col-lg-4 col-md-6 p-4">
             <div class="card border-primary rounded">
-                <img src="{{ problem.image.url }}" class="card-img-top" alt="{{ problem.name }}">
+                <img src="data:image/jpeg;base64,{{ problem.image|base64_encode }}" class="img-fluid" alt="Проблема">
                 <div class="card-body">
                     <h5 class="card-title">{{ problem.name }}</h5>
                     <p class="card-text text-truncate">{{ problem.description }}</p>
                     <p><strong>Категория:</strong> {{ problem.category.name }}</p>
                     <p><strong>Статус:</strong> {{ problem.get_status_display }}</p>
-                    <a href="{% url 'problem_detail' problem.slug %}" class="btn btn-outline-primary">Подробнее</a>
+                    <a href="{% url 'problems:about_problems' problem.id %}" class="btn btn-outline-primary">Подробнее</a>
                 </div>
             </div>
         </div>

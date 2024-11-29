@@ -1,22 +1,65 @@
 {% extends "main/base.html" %}
-{% load static %}
 
 {% block content %}
 <div class="container my-5">
-    <h2>Создать новую заявку</h2>
-    <form method="post" enctype="multipart/form-data">
+    <h2 class="text-center text-white mb-4">Создать новую заявку</h2>
+    <form method="post" enctype="multipart/form-data" class="bg-dark p-4 rounded shadow-lg">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Создать</button>
+        <!-- Имя проблемы -->
+        <div class="mb-3">
+            <label for="id_name" class="form-label text-white">Название проблемы</label>
+            <input type="text" name="name" id="id_name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ form.name.value|default_if_none:'' }}">
+            {% if form.name.errors %}
+            <div class="invalid-feedback">
+                {{ form.name.errors|striptags }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Описание -->
+        <div class="mb-3">
+            <label for="id_description" class="form-label text-white">Описание</label>
+            <textarea name="description" id="id_description" class="form-control {% if form.description.errors %}is-invalid{% endif %}" rows="4">{{ form.description.value|default_if_none:'' }}</textarea>
+            {% if form.description.errors %}
+            <div class="invalid-feedback">
+                {{ form.description.errors|striptags }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Адрес -->
+        <div class="mb-3">
+            <label for="id_address" class="form-label text-white">Адрес проблемы</label>
+            <input type="text" name="address" id="id_address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" value="{{ form.address.value|default_if_none:'' }}">
+            {% if form.address.errors %}
+            <div class="invalid-feedback">
+                {{ form.address.errors|striptags }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Категория -->
+        <div class="mb-3">
+            <label for="id_category" class="form-label text-white">Категория</label>
+            {{ form.category }}
+            {% if form.category.errors %}
+            <div class="text-danger small">
+                {{ form.category.errors|striptags }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Изображения -->
+        <div class="mb-3">
+            <label for="id_image" class="form-label text-white">Изображение проблемы</label>
+            <input type="file" name="image" id="id_image" class="form-control {% if form.image.errors %}is-invalid{% endif %}">
+            {% if form.image.errors %}
+            <div class="invalid-feedback">
+                {{ form.image.errors|striptags }}
+            </div>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Создать</button>
     </form>
 </div>
-{% endblock content %}
-
-
-{% block footer %}
-<footer class="py-4 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
-    </div>
-</footer>
-{% endblock footer %}
+{% endblock %}
