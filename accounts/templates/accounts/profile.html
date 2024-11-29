@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Личный кабинет</h2>
+    <p><strong>Пользователь:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <hr>
+    <h3>Мои заявки</h3>
+    {% if problems %}
+    <ul class="list-group">
+        {% for problem in problems %}
+        <li class="list-group-item">
+            <strong>{{ problem.name }}</strong> - {{ problem.get_status_display }}
+            <p>{{ problem.description }}</p>
+            <small>Категория: {{ problem.category.name }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Вы еще не добавляли заявки.</p>
+    {% endif %}
+</div>
+{% endblock %}

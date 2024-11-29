@@ -5,8 +5,9 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request) -> HttpResponse:
     context: dict = {
-        "title": "Home - Главная страница",
-        "content": "Городской портал"
+        "title": "Главная страница",
+        "content": "Добро пожаловать на городской портал Ижевска!",
+        "un_content": "Станьте частью команды, которая помогает жителям Ижевска улучшать свою жизнь."
     }
 
     return render(request=request, template_name="main/index.html", context=context)

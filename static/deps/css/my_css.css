@@ -1,10 +1,11 @@
 body {
-  background-image: url("http://s2.fotokto.ru/photo/full/633/6333545.jpg");
+  background-image: url("https://avatars.dzeninfra.ru/get-zen_doc/4340862/pub_641309abb3759b23d4111c73_6413270375ba0a2c444b67a3/scale_1200");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
-  height: 100%;
+  color: #f8f9fa;
+  height: 100vh;
 }
 
 .dropdown-toggle::after {
@@ -35,4 +36,15 @@ body {
   top: 80%;
   border-radius: 15px;
   font-size: 0.7rem;
+}
+
+.form-control {
+  background-color: #212529; /* Темный фон для input */
+  color: #f8f9fa; /* Светлый текст */
+}
+
+.form-control:focus {
+  background-color: #2a2f35;
+  color: #f8f9fa;
+  border-color: #495057;
 }
