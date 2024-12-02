@@ -8,20 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'deps/css/my_css.css'%}" />
+  <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}" />
   {% block css %}{% endblock css %}
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}" />
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}" />
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}" />
-  <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}" />
   <title>{{ title }}</title>
   <style>
-    /* Делаем footer фиксированным при недостатке контента */
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
     section {
       flex: 1;
     }
@@ -29,8 +25,9 @@
 </head>
 
 <body>
+  <!-- Шапка -->
   <header>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="{% url 'main:index' %}">Городской портал</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -40,16 +37,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'main:about' %}">О нас</a>
+              <a class="nav-link" href="{% url 'main:about' %}">О нас</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'problems:index'%}">Проблемы</a>
+              <a class="nav-link" href="{% url 'problems:index' %}">Проблемы</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Профиль
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Профиль</a>
               <ul class="dropdown-menu">
                 {% if user.is_authenticated %}
                 <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Личный кабинет</a></li>
@@ -65,16 +60,21 @@
       </div>
     </nav>
   </header>
+
+  <!-- Основной контент -->
   <section>
     <div class="container">
       {% block content %}{% endblock content %}
     </div>
   </section>
-  <footer class="py-4 bg-dark">
+
+  <!-- Футер -->
+  <footer>
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Городской портал 2023</p>
+      <p>&copy; Городской портал 2023</p>
     </div>
   </footer>
+
   <script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
 </body>
 

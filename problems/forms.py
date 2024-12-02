@@ -1,5 +1,5 @@
 from django import forms
-from .models import Problems
+from .models import Problems, Categories
 
 class ProblemForm(forms.ModelForm):
     # Добавляем поля загрузки изображений
@@ -22,3 +22,27 @@ class ProblemForm(forms.ModelForm):
         if commit:
             problem.save()
         return problem
+
+class AdminProblemForm(forms.ModelForm):
+    image_resolved_upload = forms.ImageField(required=False, label="Загрузить изображение решенной проблемы")  # Поле для загрузки изображения
+
+    class Meta:
+        model = Problems
+        fields = ['status']  # Только редактируемые поля
+
+    def save(self, commit=True):
+        problem = super().save(commit=False)
+
+        # Если загружено новое изображение для `image_resolved`
+        if self.cleaned_data.get('image_resolved_upload'):
+            uploaded_image = self.cleaned_data['image_resolved_upload']
+            problem.image_resolved = uploaded_image.read()  # Сохраняем изображение в поле BinaryField
+
+        if commit:
+            problem.save()
+        return problem
+    
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Categories
+        fields = ['name', 'slug']

@@ -1,11 +1,100 @@
+/* Общий фон */
 body {
-  background-image: url("https://avatars.dzeninfra.ru/get-zen_doc/4340862/pub_641309abb3759b23d4111c73_6413270375ba0a2c444b67a3/scale_1200");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
-  color: #f8f9fa;
-  height: 100vh;
+  background-color: #ffffea; /* Светло-желтый */
+  color: #333; /* Темно-серый текст */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Шапка сайта */
+header {
+  background-color: rgba(255, 240, 212, 0.9); /* Песочный с прозрачностью */
+  border-bottom: none; /* Убираем линию */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+header .navbar-brand {
+  color: #333; /* Темно-серый текст */
+  font-weight: bold;
+}
+
+header .nav-link {
+  color: #333; /* Темно-серый текст */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+header .nav-link:hover {
+  color: #f9b4b4; /* Розовый при наведении */
+}
+
+/* Футер сайта */
+footer {
+  background-color: rgba(251, 224, 224, 0.9); /* Светло-розовый с прозрачностью */
+  color: #333; /* Темный текст */
+  padding: 15px 0;
+  text-align: center;
+  border-top: none; /* Убираем линию */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Кнопки */
+.btn-primary {
+  background-color: #fff0d4; /* Песочный */
+  color: #333; /* Темный текст */
+  border: 1px solid #fbe0e0; /* Розовая рамка */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+.btn-primary:hover {
+  background-color: #fbe0e0; /* Светло-розовый */
+  color: #333;
+  border-color: #fff0d4; /* Песочный */
+}
+
+/* Карточки */
+.card {
+  border: 1px solid #fbe0e0; /* Розовая рамка */
+  background-color: #fff0d4; /* Песочный фон */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  color: #333; /* Темный текст */
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+/* Ссылки */
+a {
+  color: #333; /* Темно-серый */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+a:hover {
+  color: #fbe0e0; /* Розовый при наведении */
+  text-decoration: none; /* Без подчеркивания */
+}
+
+/* Форма */
+.form-control {
+  background-color: #fff0d4; /* Песочный */
+  color: #333; /* Темный текст */
+  border: 1px solid #fbe0e0; /* Розовая рамка */
+}
+
+.form-control:focus {
+  background-color: #ffffea; /* Светло-желтый */
+  color: #333;
+  border-color: #fbe0e0; /* Розовый */
 }
 
 .dropdown-toggle::after {

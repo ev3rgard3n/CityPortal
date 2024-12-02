@@ -2,13 +2,15 @@
 
 {% block content %}
 <div class="container my-5">
-    <h2 class="text-center text-white mb-4">Создать новую заявку</h2>
+    <h2 class="text-center  mb-4">Создать новую заявку</h2>
     <form method="post" enctype="multipart/form-data" class="bg-dark p-4 rounded shadow-lg">
         {% csrf_token %}
         <!-- Имя проблемы -->
         <div class="mb-3">
-            <label for="id_name" class="form-label text-white">Название проблемы</label>
-            <input type="text" name="name" id="id_name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ form.name.value|default_if_none:'' }}">
+            <label for="id_name" class="form-label ">Название проблемы</label>
+            <input type="text" name="name" id="id_name"
+                class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                value="{{ form.name.value|default_if_none:'' }}">
             {% if form.name.errors %}
             <div class="invalid-feedback">
                 {{ form.name.errors|striptags }}
@@ -18,8 +20,10 @@
 
         <!-- Описание -->
         <div class="mb-3">
-            <label for="id_description" class="form-label text-white">Описание</label>
-            <textarea name="description" id="id_description" class="form-control {% if form.description.errors %}is-invalid{% endif %}" rows="4">{{ form.description.value|default_if_none:'' }}</textarea>
+            <label for="id_description" class="form-label ">Описание</label>
+            <textarea name="description" id="id_description"
+                class="form-control {% if form.description.errors %}is-invalid{% endif %}"
+                rows="4">{{ form.description.value|default_if_none:'' }}</textarea>
             {% if form.description.errors %}
             <div class="invalid-feedback">
                 {{ form.description.errors|striptags }}
@@ -29,8 +33,10 @@
 
         <!-- Адрес -->
         <div class="mb-3">
-            <label for="id_address" class="form-label text-white">Адрес проблемы</label>
-            <input type="text" name="address" id="id_address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" value="{{ form.address.value|default_if_none:'' }}">
+            <label for="id_address" class="form-label ">Адрес проблемы</label>
+            <input type="text" name="address" id="id_address"
+                class="form-control {% if form.address.errors %}is-invalid{% endif %}"
+                value="{{ form.address.value|default_if_none:'' }}">
             {% if form.address.errors %}
             <div class="invalid-feedback">
                 {{ form.address.errors|striptags }}
@@ -40,7 +46,7 @@
 
         <!-- Категория -->
         <div class="mb-3">
-            <label for="id_category" class="form-label text-white">Категория</label>
+            <label for="id_category" class="form-label ">Категория</label>
             {{ form.category }}
             {% if form.category.errors %}
             <div class="text-danger small">
@@ -51,8 +57,9 @@
 
         <!-- Изображения -->
         <div class="mb-3">
-            <label for="id_image" class="form-label text-white">Изображение проблемы</label>
-            <input type="file" name="image" id="id_image" class="form-control {% if form.image.errors %}is-invalid{% endif %}">
+            <label for="id_image" class="form-label ">Изображение проблемы</label>
+            <input type="file" name="image" id="id_image"
+                class="form-control {% if form.image.errors %}is-invalid{% endif %}">
             {% if form.image.errors %}
             <div class="invalid-feedback">
                 {{ form.image.errors|striptags }}

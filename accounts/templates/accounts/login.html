@@ -3,15 +3,17 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center text-white mb-4">Вход в систему</h2>
+    <h2 class="text-center  mb-4">Вход в систему</h2>
     <form method="post" class="needs-validation" novalidate>
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6 mx-auto bg-dark p-4 rounded shadow-lg">
                 <!-- Поле Username -->
                 <div class="mb-3">
-                    <label for="id_username" class="form-label text-white">Имя пользователя</label>
-                    <input type="text" name="username" id="id_username" class="form-control {% if form.username.errors %}is-invalid{% endif %}" value="{{ form.username.value|default_if_none:'' }}">
+                    <label for="id_username" class="form-label ">Имя пользователя</label>
+                    <input type="text" name="username" id="id_username"
+                        class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+                        value="{{ form.username.value|default_if_none:'' }}">
                     {% if form.username.errors %}
                     <div class="invalid-feedback">
                         {{ form.username.errors|striptags }}
@@ -21,8 +23,9 @@
 
                 <!-- Поле Пароль -->
                 <div class="mb-3">
-                    <label for="id_password" class="form-label text-white">Пароль</label>
-                    <input type="password" name="password" id="id_password" class="form-control {% if form.password.errors %}is-invalid{% endif %}">
+                    <label for="id_password" class="form-label ">Пароль</label>
+                    <input type="password" name="password" id="id_password"
+                        class="form-control {% if form.password.errors %}is-invalid{% endif %}">
                     {% if form.password.errors %}
                     <div class="invalid-feedback">
                         {{ form.password.errors|striptags }}
@@ -32,7 +35,8 @@
 
                 <!-- Кнопка -->
                 <button type="submit" class="btn btn-primary w-100">Войти</button>
-                <p class="mt-3 text-white text-center">Нет аккаунта? <a href="{% url 'accounts:register' %}" class="text-decoration-none text-info">Зарегистрироваться</a></p>
+                <p class="mt-3  text-center">Нет аккаунта? <a href="{% url 'accounts:register' %}"
+                        class="text-decoration-none text-info">Зарегистрироваться</a></p>
             </div>
         </div>
     </form>

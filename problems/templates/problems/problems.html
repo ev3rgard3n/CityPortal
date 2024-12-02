@@ -2,19 +2,24 @@
 {% load static %}
 {% load base64_filters %}
 
-
-
 {% block content %}
 <div class="container">
     <div class="d-flex justify-content-between align-items-center my-3">
         <h2>Список проблем</h2>
-        {% if user.is_authenticated %}
+        <div>
+            {% if user.is_authenticated %}
             <a href="{% url 'problems:create_problem' %}" class="btn btn-primary">Создать заявку</a>
-        {% else %}
+            {% else %}
             <a href="{% url 'accounts:login' %}" class="btn btn-secondary">Войдите, чтобы создать заявку</a>
-        {% endif %}
+            {% endif %}
+
+            <!-- Кнопка для администратора -->
+            {% if user.is_staff %}
+            <a href="{% url 'problems:admin_add_category' %}" class="btn btn-success">Добавить категорию</a>
+            {% endif %}
+        </div>
     </div>
-    
+
     <!-- Фильтры -->
     <div class="dropdown mb-2">
         <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
@@ -23,28 +28,38 @@
         </button>
         <form method="get" class="dropdown-menu bg-dark" data-bs-theme="dark">
             {% for category in categories %}
-            <div class="form-check text-white mx-3">
-                <input class="form-check-input" type="checkbox" name="category" id="category{{ category.id }}" value="{{ category.id }}"
-                    {% if category.id|stringformat:"s" in request.GET.category %}checked{% endif %}>
-                <label class="form-check-label" for="category{{ category.id }}">{{ category.name }}</label>
-            </div>
+                <div class="form-check  mx-3">
+                    <input class="form-check-input" type="checkbox" name="category" id="category{{ category.id }}"
+                        value="{{ category.id }}" {% if category.id|stringformat:"s" in request.GET.category %}checked{%
+                        endif %}>
+                    <label class="form-check-label" for="category{{ category.id }}">{{ category.name }}</label>
+                </div>
             {% endfor %}
             <button type="submit" class="btn btn-primary mx-3 mt-3">Применить</button>
         </form>
     </div>
-    
+
     <!-- Список проблем -->
     <div class="row">
         {% for problem in problems %}
         <div class="col-lg-4 col-md-6 p-4">
             <div class="card border-primary rounded">
+                {% if problem.image %}
                 <img src="data:image/jpeg;base64,{{ problem.image|base64_encode }}" class="img-fluid" alt="Проблема">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ problem.name }}</h5>
                     <p class="card-text text-truncate">{{ problem.description }}</p>
                     <p><strong>Категория:</strong> {{ problem.category.name }}</p>
                     <p><strong>Статус:</strong> {{ problem.get_status_display }}</p>
-                    <a href="{% url 'problems:about_problems' problem.id %}" class="btn btn-outline-primary">Подробнее</a>
+                    <a href="{% url 'problems:about_problems' problem.id %}"
+                        class="btn btn-outline-primary">Подробнее</a>
+
+                    <!-- Кнопка для редактирования проблемы -->
+                    {% if user.is_staff %}
+                    <a href="{% url 'problems:admin_edit_problem' problem.id %}"
+                        class="btn btn-warning mt-2">Редактировать</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -53,13 +68,12 @@
 </div>
 {% endblock content %}
 
-
 {% block footer %}
 <footer class="py-4 bg-dark">
-	<div class="container">
-		<p class="m-0 text-center text-white">
-			Copyright &copy; Мега крутой сайт городского портала
-		</p>
-	</div>
+    <div class="container">
+        <p class="m-0 text-center ">
+            Copyright &copy; Мега крутой сайт городского портала
+        </p>
+    </div>
 </footer>
 {% endblock footer %}

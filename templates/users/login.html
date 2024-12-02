@@ -27,42 +27,42 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Информация
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">Про нас</a></li>
+                                <li><a class="dropdown-item  " href="#">Доставка и оплата</a></li>
+                                <li><a class="dropdown-item  " href="#">Контактная информация</a></li>
+                                <li><a class="dropdown-item  " href="#">Про нас</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="../carts/cart.html">Корзина</a>
+                            <a class="nav-link  " href="../carts/cart.html">Корзина</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="../users/login.html">Войти</a>
+                            <a class="nav-link  " href="../users/login.html">Войти</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Мой профиль
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="../carts/cart.html">Корзина</a></li>
-                                <li><a class="dropdown-item  text-white" href="../users/profile.html">Личный кабинет</a>
+                                <li><a class="dropdown-item  " href="../carts/cart.html">Корзина</a></li>
+                                <li><a class="dropdown-item  " href="../users/profile.html">Личный кабинет</a>
                                 </li>
-                                <li><a class="dropdown-item  text-white" href="#">Админ панель</a></li>
+                                <li><a class="dropdown-item  " href="#">Админ панель</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item  text-white" href="#">Выйти</a></li>
+                                <li><a class="dropdown-item  " href="#">Выйти</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success text-white" type="submit">Поиск</button>
+                        <button class="btn btn-outline-success " type="submit">Поиск</button>
                     </form>
                 </div>
             </div>
@@ -77,22 +77,22 @@
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Каталог
-                        <img class="mx-1" src="../deps/icons/grid-fill.svg" alt="Catalog Icon" width="16"
-                            height="16">
+                        <img class="mx-1" src="../deps/icons/grid-fill.svg" alt="Catalog Icon" width="16" height="16">
                     </button>
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Все товары</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Кухня</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Спальня</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Гостинная</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Офис</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Фурнитура</a></li>
-                        <li><a class="dropdown-item text-white" href="../goods/catalog.html">Декор</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Все товары</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Кухня</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Спальня</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Гостинная</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Офис</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Фурнитура</a></li>
+                        <li><a class="dropdown-item " href="../goods/catalog.html">Декор</a></li>
                     </ul>
                 </div>
                 <!-- Значек корзины, вызывает модальное окно -->
                 <div>
-                    <button type="button" class="btn btn-dark btn-secondary d-flex" id="modalButton" aria-expanded="false">
+                    <button type="button" class="btn btn-dark btn-secondary d-flex" id="modalButton"
+                        aria-expanded="false">
                         <img class="mx-1" src="../deps/icons/basket2-fill.svg" alt="Catalog Icon" width="24"
                             height="24">
                         <span>0</span>
@@ -121,13 +121,15 @@
                                                     <div class="col p-0">
                                                         <div class="input-group">
                                                             <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-dark btn-sm decrement"
+                                                                <button type="button"
+                                                                    class="btn btn-dark btn-sm decrement"
                                                                     data-cart-id="" data-cart-change-url="">-</button>
                                                             </span>
                                                             <input type="text" class="form-control number" value="1"
                                                                 readonly>
                                                             <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-dark btn-sm increment"
+                                                                <button type="button"
+                                                                    class="btn btn-dark btn-sm increment"
                                                                     data-cart-id="" data-cart-change-url="">+</button>
                                                             </span>
                                                         </div>
@@ -180,11 +182,13 @@
                                     <form>
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Имя пользователя</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Введите ваше имя пользователя" required>
+                                            <input type="text" class="form-control" id="username"
+                                                placeholder="Введите ваше имя пользователя" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Пароль</label>
-                                            <input type="password" class="form-control" id="password" placeholder="Введите ваш пароль" required>
+                                            <input type="password" class="form-control" id="password"
+                                                placeholder="Введите ваш пароль" required>
                                         </div>
                                         <button type="submit" class="btn btn-dark btn-block">Войти</button>
                                     </form>
@@ -195,15 +199,18 @@
                                     <div class="text-center">
                                         <p>Или авторизуйтесь через:</p>
                                         <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="../deps/icons/google.svg" alt="Catalog Icon" width="16" height="16">
+                                            <img class="mx-1" src="../deps/icons/google.svg" alt="Catalog Icon"
+                                                width="16" height="16">
                                             Google
                                         </a>
                                         <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="../deps/icons/facebook.svg" alt="Catalog Icon" width="16" height="16">
+                                            <img class="mx-1" src="../deps/icons/facebook.svg" alt="Catalog Icon"
+                                                width="16" height="16">
                                             Facebook
                                         </a>
                                         <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="../deps/icons/github.svg" alt="Catalog Icon" width="16" height="16">
+                                            <img class="mx-1" src="../deps/icons/github.svg" alt="Catalog Icon"
+                                                width="16" height="16">
                                             GitHub
                                         </a>
                                     </div>
